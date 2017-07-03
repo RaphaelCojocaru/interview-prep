@@ -7,7 +7,7 @@ import java.math.*;
 import java.util.regex.*;
 
 // https://www.hackerrank.com/challenges/migratory-birds
-public class Solution1 {
+public class Solution {
 
     static int migratoryBirds(int n, int[] arr) {
         // Complete this function
