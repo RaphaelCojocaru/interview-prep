@@ -19,10 +19,17 @@ public class Solution {
         
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (ch == 'h') {
+
+            if (ch == 'h' && hash.get('h') == -1) {
                 hash.put(ch, 1);
                 continue;
             }
+            
+            if (ch == 'a' && hash.get('r') > 1) {
+                hash.put(ch, 2);
+                continue;
+            }
+            
             if (ch == 'a' && hash.get('h') > 0) {
                 hash.put(ch, 1);
                 continue;
@@ -31,6 +38,12 @@ public class Solution {
                 hash.put(ch, 1);
                 continue;
             }
+           
+            if (ch == 'k' && hash.get('n') > 0) {
+                hash.put(ch, 2);
+                continue;
+            }
+            
             if (ch == 'k' && hash.get('c') > 0) {
                 hash.put(ch, 1);
                 continue;
@@ -39,24 +52,22 @@ public class Solution {
                 hash.put(ch, 1);
                 continue;
             }
-            if (ch == 'r' && hash.get('e') > 0) {
-                hash.put(ch, 1);
-                continue;
-            }
+            
             if (ch == 'r' && hash.get('r') > 0) {
                 hash.put(ch, 2);
                 continue;
             }
-            if (ch == 'a' && hash.get('r') > 1) {
-                hash.put(ch, 2);
+            
+            if (ch == 'r' && hash.get('e') > 0) {
+                hash.put(ch, 1);
                 continue;
             }
+
             if (ch == 'n' && hash.get('a') > 1) {
                 hash.put(ch, 1);
                 continue;
             }
-            if (ch == 'k' && hash.get('n') > 0)
-                hash.put(ch, 2);
+
         }
         
         if (hash.get('k') == 2)
