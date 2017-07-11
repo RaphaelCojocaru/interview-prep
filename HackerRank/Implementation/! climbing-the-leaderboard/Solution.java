@@ -30,35 +30,9 @@ public class Solution {
     }
     
     public static void climbLeaderboard(int n, int[] scores, int m, int[] alice) {
-        int lastScore, rank;
-        boolean found;
-        int last_index;
-        
-        /*
-        for (last_index = 0; last_index < n; last_index++) {
-            int score = scores[last_index];
-            if (score != lastScore) 
-                if (score > aloce[0]) {
-                    rank++;
-                    lastScore = score;
-                } else {
-                    System.out.println(rank);
-                    found = true;
-                    break;
-                }
-            }
-        */
-        
+
         for (int alice_score : alice)
             System.out.println(binarySearch(n, scores, alice_score));
-            /*
-            rank = 1;
-            lastScore = -1;
-            found = false;
-
-            if (found == false)
-                System.out.println(rank);
-            */
         
     }
     
@@ -78,12 +52,6 @@ public class Solution {
             }
             scores[scores_i] = lastRead;
         }
-        
-        /*
-        System.out.println("dim: " + n);
-        for (int value : scores)
-            System.out.println(value);
-        */
         
         int m = in.nextInt();
         int[] alice = new int[m];
