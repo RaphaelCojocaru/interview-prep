@@ -8,7 +8,7 @@ public class Sorting {
 		int i = low, j = high, temp;
 		int pivot_index = (low + high) / 2;
 		// Get the pivot element from the middle of the list
-        // int PIVOT = array[low + (high-low)/2]; 
+		// int PIVOT = array[low + (high-low)/2]; 
         
 		while (i <= j) {
 			while (array[i] < array[pivot_index])
