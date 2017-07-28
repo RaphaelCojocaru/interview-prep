@@ -1,5 +1,7 @@
 package SimpleLinkedList;
 
+import java.util.Stack;
+
 public class Course2 {
 	public static void printList(Node list) {
 		for (; list != null; list = list.next)
@@ -53,6 +55,59 @@ public class Course2 {
 		return head;
 	}
 	
+	public static Node insertOrdered(Node list, int data) {
+		Node head = list, prev = null, aux;
+		
+		// find the first element bigger, having the previous one stored
+		for (; list != null; prev = list, list = list.next) {
+			if (list.info > data)
+				break;
+		}
+		
+		// create the node
+		aux = new Node(data);
+		
+		// if we need to insert the new node at the head of the list
+		if (prev == null) {
+			aux.next = list;
+			return aux;
+		}
+		
+		// link the nodes
+		aux.next = prev.next;
+		prev.next = aux;
+		
+		return head;
+	}
+	
+	public static Node Reverse(Node list) {
+	    Stack<Node> stack = new Stack<Node>();
+	    Node head = null, tail = null;
+	    
+	    // put the nodes into the stack
+	    for (; list != null; list = list.next)
+	        stack.push(list);
+	    
+	    // reverse the lsit
+	    while (stack.empty() == false) {
+	    	// get the node from the stack
+	        Node currNode = stack.pop();
+
+	        // create the list
+	        if (head == null)
+	            head = currNode;
+	        else
+	            tail.next = currNode;
+	        
+	        tail = currNode;
+	    }
+	    
+	    // set the next of the tail to null in order to avoid cycles
+	    tail.next = null;
+	    
+	    return head;
+	}
+	
 	public static void main(String[] args) {
 		Node list = new Node(1);
 		list.append(2);
@@ -68,5 +123,11 @@ public class Course2 {
 		Node move = moveElements(list);
 		printList(list);
 		printList(move);
+		
+		Node ordered = insertOrdered(null, 4);
+		ordered = insertOrdered(ordered, 3);
+	    printList(ordered);
+	    Node r = Reverse(ordered);
+	    printList(r);
 	}
 }
