@@ -31,20 +31,16 @@ public class Solution {
     
     public static int minimumUnits(int[] arr, int n) {
         int count = 0, last;
-        boolean found = false;
         
         quickSort(arr, 0, n - 1);
         
         for (int i = 0; i < n; i++) {
             last = arr[i];
-            found = false;
-            while (i < n && arr[i] <= last + 4) {
+            while (i < n && arr[i] <= last + 4)
                 i++;
-                found = true;
-            }
-            
-            // get a position backwards
-            if (found)
+
+            // if we found at least one value get a position backwards
+            if (i < n && arr[i] != last)
                 i--;
             
             count++;
