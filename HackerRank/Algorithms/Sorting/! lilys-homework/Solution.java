@@ -56,7 +56,7 @@ public class Solution {
 			quickSortReversed(array, i, high);
 	}
     
-    public static int getSwapsNo(int[] arr, int[]arr_sorted, HashMap<Integer, Integer> hash) {
+    public static int getSwapsNo(int[] arr, int[] arr_sorted, HashMap<Integer, Integer> hash) {
         int count = 0;
 
         // count the swaps number
