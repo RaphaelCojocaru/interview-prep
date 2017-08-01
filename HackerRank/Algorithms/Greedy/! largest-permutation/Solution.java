@@ -6,21 +6,18 @@ import java.util.regex.*;
 
 // https://www.hackerrank.com/challenges/largest-permutation
 public class Solution {
-    public static void largestPermutation(int n, int[] arr, int k) {
+    public static void largestPermutation(int n, int[] arr, int k, Integer[] sorted, HashMap<Integer, Integer> hash) {
         int maxValue, maxIndex, temp;
         
-        for (int i = 0; i < n - 1; i++) {
-            maxValue = -1;
-            maxIndex = i;
-            for (int j = i + 1; j < n; j++)
-                if (arr[j] > maxValue) {
-                    maxValue = arr[j];
-                    maxIndex = j;
-                }
-            if (arr[i] < maxValue) {
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != sorted[i]) {
+                int index = hash.get(sorted[i]);
+                hash.put(sorted[i], i);
+                hash.put(arr[i], index);
+                
                 temp = arr[i];
-                arr[i] = arr[maxIndex];
-                arr[maxIndex] = temp;
+                arr[i] = sorted[i];
+                arr[index] = temp;
                 k--;
             }
             
@@ -43,8 +40,16 @@ public class Solution {
         n = sc.nextInt();
         k = sc.nextInt();
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++)
+        Integer[] sorted = new Integer[n];
+        HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>();
+        
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
-        largestPermutation(n, arr, k);
+            sorted[i] = arr[i];
+            hash.put(arr[i], i);
+        }
+        
+        Arrays.sort(sorted, Collections.reverseOrder());
+        largestPermutation(n, arr, k, sorted, hash);
     }
 }
