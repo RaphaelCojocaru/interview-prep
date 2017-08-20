@@ -4,7 +4,7 @@ import java.util.Random;
 
 // Write code to partition a linked list around a value x, such that all nodes less than
 //x come before all nodes greater than or equal to x.
-public class Solution4 {
+public class Solution {
 	public static Node insertAtHead(Node list, int value) {
 		Node head = new Node(value);
 
