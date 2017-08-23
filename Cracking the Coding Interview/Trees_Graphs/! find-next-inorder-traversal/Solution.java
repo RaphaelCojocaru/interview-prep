@@ -5,7 +5,7 @@ package Trees_Graphs;
 public class Solution {
 	public static Node leftMost(Node root) {
 		if (root.left == null)
-			return.root;
+			return root;
 		
 		return leftMost(root.left);
 	}
