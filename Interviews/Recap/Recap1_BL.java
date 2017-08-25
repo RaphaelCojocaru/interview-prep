@@ -135,6 +135,55 @@ public class Recap1_BL {
 		System.out.println(binarySearch(arr2, 34));
 		System.out.println(binarySearch(arr2, 34));
 
+		// enhanced for-loop: LinkedList, ArrayList, Stack, Queue, PriorityQueue
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
 
+		for (int value : list)
+			System.out.print(value + " ");
+
+		System.out.println();
+
+		ArrayList<Integer> list2 = new ArrayList<Integer>();
+		list2.add(11);
+		list2.add(12);
+		list2.add(13);
+
+		for (int value : list2)
+			System.out.print(value + " ");
+
+		System.out.println();
+
+		Stack<Integer> stack = new Stack<Integer>();
+		stack.push(21);
+		stack.push(22);
+		stack.push(23);
+
+		for (int value : stack)
+			System.out.print(value + " ");
+
+		System.out.println();
+
+		HashSet<Integer> set = new HashSet<Integer>();
+		set.add(31);
+		set.add(32);
+		set.add(33);
+
+		for (int value : set)
+			System.out.print(value + " ");
+
+		System.out.println();
+		
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+		queue.add(41);
+		queue.add(42);
+		queue.add(43);
+
+		for (int value : queue)
+			System.out.print(value + " ");
+
+		System.out.println();
 	}
 }
