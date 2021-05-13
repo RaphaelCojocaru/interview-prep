@@ -24,7 +24,7 @@ public class Solution {
               
                     return end;
                 }
-            if (s.charAt(end) == s.charAt(start + 1)) {
+                if (s.charAt(end) == s.charAt(start + 1)) {
                     if (end - 1 >= start + 2)
                         if (s.charAt(end -1) != s.charAt(start + 2))
                             return end;
