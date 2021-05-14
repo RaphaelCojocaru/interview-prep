@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-// https://www.hackerrank.com/challenges/arrays-ds/problem
 class Result {
     /*
      * Complete the 'reverseArray' function below.
@@ -30,6 +29,7 @@ class Result {
     }
 }
 
+// https://www.hackerrank.com/challenges/arrays-ds/problem
 public class Solution2 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
