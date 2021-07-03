@@ -1,62 +1,75 @@
 import java.io.*;
-import java.util.*;
-import java.text.*;
 import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.regex.*;
 
-// https://www.hackerrank.com/challenges/kaprekar-numbers/problem
-public class Solution {
+class Result {
 
-    // return the number of digits of the number
-    public static int numberLength(long n) {
-        int count = 0;
-        
-        while (n > 0) {
-            n = n / 10;
-            count++;
-        }
-        
-        return count;
-    }
-    
-    public static void kaprekarNumbers(int start, int end) {
-        String output = "";
-        for (int value = start; value <= end; value++) {
-            if (value == 1)
-                output += value + " ";
-            // use long for computing the square
-            long copy = (long) value * value;
-            int length = numberLength(copy );
-            int length1 = length / 2;
-            int length2 = length - length1;
-            // compute the first and second halves of the number
-            long firstHalf = copy / (long) Math.pow(10, length2);
-            long secondHalf = copy % (long) Math.pow(10, length2);
-            // no half should be equal to 0
-            if (firstHalf == 0 || secondHalf == 0)
-                continue;
- 
-            if (length1 == 0)
-                firstHalf = 0;
-            if (length2 == 0)
-                secondHalf = 0;
+    /*
+     * Complete the 'kaprekarNumbers' function below.
+     *
+     * The function accepts following parameters:
+     *  1. INTEGER p
+     *  2. INTEGER q
+     */
 
-            if (firstHalf + secondHalf == value)
-                output += (value + " ");
+    public static void kaprekarNumbers(int p, int q) {
+        int left, right, count = 0;
+        BigInteger squared;
+        String number;
+
+        for (int i = p; i <= q; i++) {
+            squared = BigInteger.valueOf(i);
+            squared = squared.multiply(BigInteger.valueOf(i));
+
+            number = squared.toString();
+
+            left = 0;
+            if (number.substring(0, number.length() / 2).length() > 0) {
+                left = Integer.parseInt(number.substring(0, number.length() / 2));
+            }
+
+            right = Integer.parseInt(number.substring(number.length() / 2));
+            if (left + right == i) {
+                System.out.print(i + " ");
+
+                count++;
+            }
         }
-        
-        if (output.length() == 0)
+
+        if (count == 0) {
             System.out.println("INVALID RANGE");
-        else
-            System.out.println(output.substring(0, output.length() - 1));
+        }
     }
-    
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        int start = sc.nextInt();
-        int end = sc.nextInt();
-        
-        kaprekarNumbers(start, end);
+
+    public static int noOfDigits(long value) {
+        int digits = 0;
+
+        while (value > 0) {
+            value /= 10;
+
+            digits++;
+        }
+
+        return digits;
+    }
+
+}
+
+// https://www.hackerrank.com/challenges/kaprekar-numbers/problem
+public class Solution2 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int p = Integer.parseInt(bufferedReader.readLine().trim());
+
+        int q = Integer.parseInt(bufferedReader.readLine().trim());
+
+        Result.kaprekarNumbers(p, q);
+
+        bufferedReader.close();
     }
 }
