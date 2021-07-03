@@ -17,9 +17,15 @@ public class Solution {
             else
                 set.add(value);
         }
-        
-        Iterator<Integer> it = set.iterator();  
-        return it.next();  
+
+        // for (Integer value : set) {
+        //    return value;
+        // }
+
+        Iterator<Integer> it = set.iterator();
+
+        return it.next();
+
     }
     
     public static void main(String[] args) {
