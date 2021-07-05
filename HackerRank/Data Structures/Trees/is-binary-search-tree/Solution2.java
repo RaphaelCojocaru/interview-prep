@@ -9,17 +9,15 @@ The Node class is defined as follows:
 */
 // https://www.hackerrank.com/challenges/is-binary-search-tree
 boolean checkBST(Node root) {
-    return checkBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    return checkAux(root, Integer.MIN_VALUE, Integer.MAX_VALUE);    
 }
 
-boolean checkBST(Node root, int min, int max) {
-    if (root == null) {
+boolean checkAux(Node root, int min, int max) {
+    if (root == null)
         return true;
-    }
-
-    if (root.data <= min || root.data >= max) {
+    if (root.data <= min)
         return false;
-    }
-
-    return checkBST(root.left, min, root.data) && checkBST(root.right, root.data, max);
+    if (root.data >= max)
+        return false;
+    return checkAux(root.left, min, root.data) && checkAux(root.right, root.data, max);
 }
